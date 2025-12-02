@@ -1109,9 +1109,9 @@
     <div class="emergency-banner">
         <h3>Medical Emergency?</h3>
         <p>Our emergency department is open 24/7 with expert care available immediately. Don't hesitate to call in case of any medical emergency.</p>
-        <button class="emergency-button">
+        <a href="./404.html"><button class="emergency-button">
             <i class="fas fa-phone-alt"></i> Call Emergency: 1-800-MED-CARE
-        </button>
+        </button></a>
     </div>
 
     <!-- Contact Page Content -->
@@ -1594,17 +1594,7 @@ contactLinks.forEach(link => {
     link.classList.add('active');
 });
 
-// =========================
-// EMERGENCY BUTTON FUNCTIONALITY
-// =========================
-const emergencyButton = document.querySelector('.emergency-button');
-emergencyButton.addEventListener('click', () => {
-    if (confirm('Call Emergency Services: 1-800-MED-CARE?\n\nIn a real emergency, please call immediately.')) {
-        // In a real implementation, this would initiate a phone call
-        // For demo purposes, we'll just show an alert
-        alert('Emergency services alerted. Please proceed with calling 1-800-MED-CARE for immediate assistance.');
-    }
-});
+
     </script>
 
 </body>
