@@ -389,6 +389,18 @@
             transform: rotate(90deg);
         }
 
+               /* FIX: Close (X) button should not overlap Home */
+.mobile-nav-close {
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 2001 !important;
+}
+
+.mobile-nav ul {
+    margin-top: 20px !important;
+}
+
+
         /* Mobile menu header */
         .mobile-nav-header {
             position: absolute;
@@ -1081,7 +1093,7 @@
     <!-- Header -->
     <header id="header">
         <a href="index.html" class="logo">
-            <i class="fas fa-stethoscope"></i>
+    <img src="./image/Untitled design.webp" alt="STACKLY Logo" class="logo-img">
             <span>Stackly</span> Plus
         </a>
         <nav class="desktop-nav">
@@ -1207,7 +1219,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Cardiology">Book Appointment</button>
-                        <a href="#" class="btn-secondary">View Specialists</a>
+                        <a href="./404.html" class="btn-secondary">View Specialists</a>
                     </div>
                 </div>
             </div>
@@ -1249,7 +1261,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Neurology">Book Appointment</button>
-                        <a href="#" class="btn-secondary">Learn More</a>
+                        <a href="./404.html" class="btn-secondary">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1291,7 +1303,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Orthopedics">Book Appointment</button>
-                        <a href="#" class="btn-secondary">View Procedures</a>
+                        <a href="./404.html" class="btn-secondary">View Procedures</a>
                     </div>
                 </div>
             </div>
@@ -1333,7 +1345,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Pediatrics">Book Appointment</button>
-                        <a href="#" class="btn-secondary">Child Health Tips</a>
+                        <a href="./404.html" class="btn-secondary">Child Health Tips</a>
                     </div>
                 </div>
             </div>
@@ -1375,7 +1387,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Oncology">Book Consultation</button>
-                        <a href="#" class="btn-secondary">Support Services</a>
+                        <a href="./404.html" class="btn-secondary">Support Services</a>
                     </div>
                 </div>
             </div>
@@ -1417,7 +1429,7 @@
                     
                     <div class="department-actions">
                         <button class="cta-button book-dept-appointment" data-dept="Gastroenterology">Book Appointment</button>
-                        <a href="#" class="btn-secondary">Learn More</a>
+                        <a href="./404.html" class="btn-secondary">Learn More</a>
                     </div>
                 </div>
             </div>

@@ -286,7 +286,7 @@
             border-color: rgba(26, 115, 232, 0.2);
         }
 
-        /* Mobile Dropdown Styles - FIXED */
+        /* Mobile Dropdown Styles */
         .mobile-dropdown-content {
             max-height: 0;
             overflow: hidden;
@@ -344,7 +344,6 @@
             font-size: 14px;
         }
 
-        /* FIX: Arrow rotation when active */
         .mobile-dropdown-toggle.active i {
             transform: rotate(180deg);
         }
@@ -375,6 +374,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 20px;
+            z-index: 2001;
         }
 
         .mobile-nav-close:hover {
@@ -383,32 +383,38 @@
             transform: rotate(90deg);
         }
 
-        /* Mobile menu header */
-        .mobile-nav-header {
+        /* FIXED: Calendar Icon Styles */
+        .input-icon {
             position: absolute;
-            top: 0;
-            left: 0;
+            right: 15px;
+            top: 42px;
+            color: #999;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        .input-icon i {
+            pointer-events: none;
+        }
+
+        /* Fix for date input to make room for icon */
+        #dob {
+            padding-right: 45px;
+            cursor: pointer;
+        }
+
+        /* Hide the default calendar icon */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            position: absolute;
             right: 0;
-            padding: 20px 30px;
-            border-bottom: 1px solid rgba(26, 115, 232, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mobile-nav-header .logo {
-            font-size: 22px;
-            justify-content: center;
-        }
-
-        .mobile-nav-header .logo-img {
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .mobile-nav-header h3 {
-            font-size: 20px;
-            margin: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 1;
         }
 
         /* Overlay */
@@ -429,6 +435,93 @@
         .overlay.active {
             opacity: 1;
             visibility: visible;
+        }
+
+        /* Appointment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
         }
 
         .password-rules li {
@@ -555,12 +648,12 @@
             width: 100%;
         }
 
-        .form-group {
+        .form-group-signup {
             margin-bottom: 25px;
             position: relative;
         }
 
-        .form-group label {
+        .form-group-signup label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
@@ -568,7 +661,7 @@
             font-size: 15px;
         }
 
-        .form-group input, .form-group select {
+        .form-group-signup input, .form-group-signup select {
             width: 100%;
             padding: 15px 20px;
             border: 1px solid #ddd;
@@ -578,19 +671,11 @@
             background: #f9f9f9;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group-signup input:focus, .form-group-signup select:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
             background: white;
-        }
-
-        .form-group .input-icon {
-            position: absolute;
-            right: 20px;
-            top: 42px;
-            color: #999;
-            font-size: 18px;
         }
 
         .form-row {
@@ -598,7 +683,7 @@
             gap: 20px;
         }
 
-        .form-row .form-group {
+        .form-row .form-group-signup {
             flex: 1;
         }
 
@@ -922,7 +1007,6 @@
                 display: block;
             }
             
-            /* Show desktop nav on medium screens */
             .desktop-nav {
                 display: block;
             }
@@ -955,7 +1039,6 @@
                 flex-direction: column;
             }
             
-            /* Hide desktop nav on small screens */
             .desktop-nav {
                 display: none;
             }
@@ -989,20 +1072,6 @@
             }
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
         /* Success Message */
         .success-message {
             display: none;
@@ -1024,13 +1093,21 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header id="header">
         <a href="index.html" class="logo">
-            <i class="fas fa-stethoscope"></i>
+            <img src="./image/Untitled design.webp" alt="STACKLY Logo" class="logo-img">
             <span>Stackly</span> Plus
         </a>
         <nav class="desktop-nav">
@@ -1050,7 +1127,7 @@
                 <li><a href="./login.html">Login</a></li>
             </ul>
         </nav>
-        <a href="login.html"><button class="cta-button header-cta" id="bookAppointment">Book Appointment</button></a>
+        <button class="cta-button header-cta" id="bookAppointment">Book Appointment</button>
         <div class="mobile-menu" id="mobileMenu">
             <i class="fas fa-bars"></i>
         </div>
@@ -1155,14 +1232,14 @@
             
             <form class="signup-form" id="signupForm">
                 <div class="form-row">
-                    <div class="form-group">
+                    <div class="form-group-signup">
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" required>
                         <div class="input-icon">
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-signup">
                         <label for="lastName">Last Name</label>
                         <input type="text" id="lastName" required>
                         <div class="input-icon">
@@ -1171,7 +1248,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group-signup">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" required>
                     <div class="input-icon">
@@ -1179,7 +1256,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group-signup">
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" required>
                     <div class="input-icon">
@@ -1187,15 +1264,16 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <!-- FIXED: Date of Birth field with working calendar icon -->
+                <div class="form-group-signup">
                     <label for="dob">Date of Birth</label>
                     <input type="date" id="dob" required>
-                    <div class="input-icon">
+                    <div class="input-icon date-picker-icon">
                         <i class="fas fa-calendar"></i>
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group-signup">
                     <label for="gender">Gender</label>
                     <select id="gender" required>
                         <option value="">Select Gender</option>
@@ -1210,7 +1288,7 @@
                 </div>
                 
                 <!-- Additional fields for doctors -->
-                <div class="form-group doctor-field" style="display: none;">
+                <div class="form-group-signup doctor-field" style="display: none;">
                     <label for="specialization">Medical Specialization</label>
                     <select id="specialization">
                         <option value="">Select Specialization</option>
@@ -1226,7 +1304,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group doctor-field" style="display: none;">
+                <div class="form-group-signup doctor-field" style="display: none;">
                     <label for="licenseNumber">Medical License Number</label>
                     <input type="text" id="licenseNumber">
                     <div class="input-icon">
@@ -1234,20 +1312,22 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group-signup">
                     <label for="password">Password</label>
                     <input type="password" id="password" required>
-                    <!-- Password Rule Checklist -->
-                    <ul class="password-rules" id="passwordRules" style="margin-top:10px; list-style:none; padding-left:0; font-size:13px; line-height:1.6;">
-                        <li id="ruleLength">✘ Minimum 8 characters</li>
-                        <li id="ruleUpper">✘ At least 1 uppercase letter (A–Z)</li>
-                        <li id="ruleLower">✘ At least 1 lowercase letter (a–z)</li>
-                        <li id="ruleNumber">✘ At least 1 number (0–9)</li>
-                        <li id="ruleSpecial">✘ At least 1 special character (!@#$%^&*)</li>
-                    </ul>
-                    <div class="input-icon">
-                        <i class="fas fa-lock"></i>
+                    <div class="input-icon toggle-password" data-target="password">
+                        <i class="fas fa-eye"></i>
                     </div>
+
+                    <!-- Password Rule Checklist -->
+                    <ul class="password-rules" id="passwordRules">
+                        <li id="ruleLength" data-text="Minimum 8 characters">✘ Minimum 8 characters</li>
+                        <li id="ruleUpper" data-text="At least 1 uppercase letter (A–Z)">✘ At least 1 uppercase letter (A–Z)</li>
+                        <li id="ruleLower" data-text="At least 1 lowercase letter (a–z)">✘ At least 1 lowercase letter (a–z)</li>
+                        <li id="ruleNumber" data-text="At least 1 number (0–9)">✘ At least 1 number (0–9)</li>
+                        <li id="ruleSpecial" data-text="At least 1 special character (!@#$%^&*)">✘ At least 1 special character (!@#$%^&*)</li>
+                    </ul>
+
                     <div class="password-strength">
                         <div class="strength-bar">
                             <div class="strength-fill" id="passwordStrengthBar"></div>
@@ -1255,12 +1335,12 @@
                         <div class="strength-text" id="passwordStrengthText">Password strength: None</div>
                     </div>
                 </div>
-                
-                <div class="form-group">
+
+                <div class="form-group-signup">
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" required>
-                    <div class="input-icon">
-                        <i class="fas fa-lock"></i>
+                    <div class="input-icon toggle-password" data-target="confirmPassword">
+                        <i class="fas fa-eye"></i>
                     </div>
                     <div id="passwordMatch" style="font-size: 13px; margin-top: 5px;"></div>
                 </div>
@@ -1281,22 +1361,16 @@
                 <span>Or sign up with</span>
             </div>
             
-           <div class="social-login">
-
-    <!-- Google Login -->
-    <a href="./404.html" class="social-btn google" id="googleLogin">
-        <i class="fab fa-google"></i>
-        <span>Google</span>
-    </a>
-
-    <!-- Facebook Login -->
-    <a href="./404.html" class="social-btn facebook" id="facebookLogin">
-        <i class="fab fa-facebook-f"></i>
-        <span>Facebook</span>
-    </a>
-
-</div>
-
+            <div class="social-signup">
+                <a href="./404.html" class="social-btn google" id="googleLogin">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </a>
+                <a href="./404.html" class="social-btn facebook" id="facebookLogin">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+            </div>
             
             <div class="login-link">
                 Already have an account? <a href="login.html">Sign in here</a>
@@ -1321,11 +1395,11 @@
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="./services.html">Services</a></li>
-                <li><a href="./departments.html">Departments</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./login.html">Login</a></li>
+                    <li><a href="./departments.html">Departments</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./login.html">Login</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1348,54 +1422,160 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 MediCare Plus Medical Center. All Rights Reserved.</p>
+            <p>&copy; 2023 StacklyPlus Medical Center. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Appointment Modal -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Appointment</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Medical Department</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="radiology">Radiology</option>
+                        <option value="dental">Dental Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-// ------------ Sticky Header ------------
-const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
+// =========================
+// HEADER SCROLL EFFECT
+// =========================
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
 });
 
+// =========================
+// MOBILE MENU OPEN / CLOSE
+// =========================
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('overlay');
+const closeMobileNav = document.getElementById('closeMobileNav');
 
-// ------------ Mobile Menu ------------
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileNav = document.getElementById("mobileNav");
-const overlay = document.getElementById("overlay");
-const closeMobileNav = document.getElementById("closeMobileNav");
+function openMobileNav() {
+    mobileNav.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-mobileMenu.addEventListener("click", () => {
-    mobileNav.classList.add("active");
-    overlay.classList.add("active");
-});
+function closeMobile() {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
 
-closeMobileNav.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-    overlay.classList.remove("active");
-});
+mobileMenu.addEventListener('click', openMobileNav);
+closeMobileNav.addEventListener('click', closeMobile);
+overlay.addEventListener('click', closeMobile);
 
-overlay.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-    overlay.classList.remove("active");
-});
+// =========================
+// MOBILE DROPDOWN
+// =========================
+const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-
-// ------------ Mobile Dropdown ------------
-document.querySelectorAll(".mobile-dropdown-toggle").forEach(toggle => {
-    toggle.addEventListener("click", (e) => {
+mobileDropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
         e.preventDefault();
-        const parent = toggle.parentElement;
-        const dropdown = parent.querySelector(".mobile-dropdown-content");
-
-        toggle.classList.toggle("active");
-        dropdown.classList.toggle("active");
+        const dropdown = toggle.nextElementSibling;
+        toggle.classList.toggle('active');
+        dropdown.classList.toggle('active');
     });
 });
 
+// =========================
+// SHOW / HIDE PASSWORD
+// =========================
+const toggles = document.querySelectorAll(".toggle-password");
+toggles.forEach(toggle => {
+    toggle.addEventListener("click", () => {
+        const targetId = toggle.getAttribute("data-target");
+        const input = document.getElementById(targetId);
+        const icon = toggle.querySelector("i");
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    });
+});
 
-// ------------ User Type Selector ------------
+// =========================
+// FIXED: CALENDAR ICON FUNCTIONALITY
+// =========================
+document.addEventListener('DOMContentLoaded', function() {
+    const dobInput = document.getElementById('dob');
+    const calendarIcon = document.querySelector('.date-picker-icon');
+    
+    if (dobInput && calendarIcon) {
+        // Make calendar icon clickable
+        calendarIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Focus on the date input
+            dobInput.focus();
+            
+            // For modern browsers
+            if (dobInput.showPicker) {
+                dobInput.showPicker();
+            } else {
+                // For older browsers, trigger click on the input
+                dobInput.click();
+            }
+        });
+        
+        // Add today's date as max and set default to 18 years ago
+        const today = new Date();
+        dobInput.max = today.toISOString().split('T')[0];
+        
+        // Set default date to 18 years ago
+        const defaultDate = new Date();
+        defaultDate.setFullYear(today.getFullYear() - 18);
+        dobInput.value = defaultDate.toISOString().split('T')[0];
+        
+        // Make sure the input has proper padding for the icon
+        dobInput.style.paddingRight = '45px';
+    }
+});
+
+// =========================
+// USER TYPE SELECTOR
+// =========================
 const patientBtn = document.getElementById("patientBtn");
 const doctorBtn = document.getElementById("doctorBtn");
 const doctorFields = document.querySelectorAll(".doctor-field");
@@ -1412,12 +1592,12 @@ doctorBtn.addEventListener("click", () => {
     doctorFields.forEach(f => f.style.display = "block");
 });
 
-
-// ------------ Password Strength Checker ------------
+// =========================
+// PASSWORD STRENGTH CHECKER
+// =========================
 const password = document.getElementById("password");
 const strengthBar = document.getElementById("passwordStrengthBar");
 const strengthText = document.getElementById("passwordStrengthText");
-
 const ruleLength = document.getElementById("ruleLength");
 const ruleUpper = document.getElementById("ruleUpper");
 const ruleLower = document.getElementById("ruleLower");
@@ -1426,10 +1606,7 @@ const ruleSpecial = document.getElementById("ruleSpecial");
 
 password.addEventListener("input", () => {
     const val = password.value;
-
     let strength = 0;
-
-    // Rules
     const checks = [
         { regex: /.{8,}/, element: ruleLength },
         { regex: /[A-Z]/, element: ruleUpper },
@@ -1442,27 +1619,25 @@ password.addEventListener("input", () => {
         if (rule.regex.test(val)) {
             rule.element.classList.add("valid");
             rule.element.classList.remove("invalid");
-            rule.element.innerHTML = "✔ " + rule.element.innerText.slice(2);
+            rule.element.innerHTML = "✔ " + rule.element.dataset.text;
             strength++;
         } else {
             rule.element.classList.add("invalid");
             rule.element.classList.remove("valid");
-            rule.element.innerHTML = "✘ " + rule.element.innerText.slice(2);
+            rule.element.innerHTML = "✘ " + rule.element.dataset.text;
         }
     });
 
-    // Strength Bar Colors + Width
     const colors = ["#f44336", "#ff9800", "#ffeb3b", "#4caf50", "#2e7d32"];
-
     strengthBar.style.width = (strength * 20) + "%";
     strengthBar.style.background = colors[strength - 1] || "#e0e0e0";
-
     const textLabels = ["None", "Very Weak", "Weak", "Medium", "Strong", "Very Strong"];
     strengthText.textContent = "Password strength: " + textLabels[strength];
 });
 
-
-// ------------ Confirm Password Match ------------
+// =========================
+// CONFIRM PASSWORD MATCH
+// =========================
 const confirmPassword = document.getElementById("confirmPassword");
 const passwordMatch = document.getElementById("passwordMatch");
 
@@ -1476,8 +1651,83 @@ confirmPassword.addEventListener("input", () => {
     }
 });
 
+// =========================
+// APPOINTMENT MODAL
+// =========================
+const appointmentButtons = document.querySelectorAll('#bookAppointment, #mobileAppointment');
+const appointmentModal = document.getElementById('appointmentModal');
+const closeModal = document.getElementById('closeModal');
 
-// ------------ Form Submit ------------
+appointmentButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        appointmentModal.style.display = 'flex';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+closeModal.addEventListener('click', () => {
+    appointmentModal.style.display = 'none';
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === appointmentModal || e.target === overlay) {
+        appointmentModal.style.display = 'none';
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// =========================
+// SET TODAY DATE FOR APPOINTMENT
+// =========================
+const appointmentDateInput = document.getElementById('date');
+if (appointmentDateInput) {
+    appointmentDateInput.min = new Date().toISOString().split('T')[0];
+}
+
+// =========================
+// APPOINTMENT FORM SUBMISSION
+// =========================
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = {
+        name: document.getElementById('fullName').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        department: document.getElementById('department').value,
+        date: document.getElementById('date').value
+    };
+    
+    // Validate
+    if (!formData.name || !formData.phone || !formData.email || !formData.department || !formData.date) {
+        alert('Please fill all required fields!');
+        return;
+    }
+    
+    // Show success message
+    alert(`Appointment booked successfully!\nWe'll contact you at ${formData.phone} to confirm.`);
+    
+    // Close modal
+    appointmentModal.style.display = 'none';
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Reset form
+    this.reset();
+    
+    // Reset date to today
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+});
+
+// =========================
+// SIGNUP FORM SUBMISSION
+// =========================
 const signupForm = document.getElementById("signupForm");
 const successMessage = document.getElementById("successMessage");
 
@@ -1490,8 +1740,16 @@ signupForm.addEventListener("submit", (e) => {
         return;
     }
 
+    // Terms agreement check
+    const termsCheckbox = document.getElementById("terms");
+    if (!termsCheckbox.checked) {
+        alert("Please agree to the Terms of Service and Privacy Policy.");
+        return;
+    }
+
     // Show success message
     successMessage.style.display = "block";
+    signupForm.style.display = "none";
 
     // Smooth scroll to success message
     successMessage.scrollIntoView({ behavior: "smooth" });
@@ -1501,7 +1759,8 @@ signupForm.addEventListener("submit", (e) => {
         window.location.href = "dashboard.html";
     }, 2000);
 });
-</script>
 
+
+    </script>
 </body>
 </html>

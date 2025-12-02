@@ -230,7 +230,7 @@
             z-index: 1001;
         }
 
-        /* Centered Mobile Navigation */
+        /* Mobile Navigation */
         .mobile-nav {
             position: fixed;
             top: 50%;
@@ -300,7 +300,7 @@
             border-color: var(--primary);
         }
 
-        /* Mobile Dropdown Styles */
+        /* Mobile Dropdown */
         .mobile-dropdown-content {
             max-height: 0;
             overflow: hidden;
@@ -358,16 +358,6 @@
             transform: rotate(180deg);
         }
 
-        .mobile-nav .cta-button {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-            padding: 15px;
-            font-size: 16px;
-            border-radius: 12px;
-        }
-
-        /* Close button for mobile menu */
         .mobile-nav-close {
             position: absolute;
             top: 20px;
@@ -384,40 +374,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 20px;
+            z-index: 2001;
         }
 
         .mobile-nav-close:hover {
             background: var(--primary);
             color: white;
             transform: rotate(90deg);
-        }
-
-        /* Mobile menu header */
-        .mobile-nav-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 30px;
-            border-bottom: 1px solid rgba(26, 115, 232, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mobile-nav-header .logo {
-            font-size: 22px;
-            justify-content: center;
-        }
-
-        .mobile-nav-header .logo-img {
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .mobile-nav-header h3 {
-            font-size: 20px;
-            margin: 0;
         }
 
         /* Overlay */
@@ -440,7 +403,95 @@
             visibility: visible;
         }
 
-        /* Login Page Hero */
+        /* Appointment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-form-group {
+            margin-bottom: 20px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .modal-form-group input,
+        .modal-form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form-group input:focus,
+        .modal-form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+
+        /* Login Hero */
         .login-hero {
             min-height: 400px;
             display: flex;
@@ -1042,7 +1093,7 @@
     <!-- Header -->
     <header id="header">
         <a href="index.html" class="logo">
-            <i class="fas fa-stethoscope"></i>
+            <img src="./image/Untitled design.webp" alt="STACKLY Logo" class="logo-img">
             <span>Stackly</span> Plus
         </a>
         <nav class="desktop-nav">
@@ -1066,6 +1117,7 @@
             <i class="fas fa-bars"></i>
         </div>
     </header>
+
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" id="closeMobileNav">
@@ -1181,21 +1233,15 @@
                     </div>
                     
                     <div class="social-login">
-
-    <!-- Google Login -->
-    <a href="./404.html" class="social-btn google" id="googleLogin">
-        <i class="fab fa-google"></i>
-        <span>Google</span>
-    </a>
-
-    <!-- Facebook Login -->
-    <a href="./404.html" class="social-btn facebook" id="facebookLogin">
-        <i class="fab fa-facebook-f"></i>
-        <span>Facebook</span>
-    </a>
-
-</div>
-
+                        <a href="./404.html" class="social-btn google" id="googleLogin">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </a>
+                        <a href="./404.html" class="social-btn facebook" id="facebookLogin">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
                     
                     <div class="signup-link">
                         <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
@@ -1241,10 +1287,10 @@
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="footer-links">
-                       <p><strong>Email:</strong> support@stackly.com</p>
-            <p><strong>Phone:</strong> +91 98765 43210</p>
-            <p><strong>Location:</strong> Salem, India</p>
-             <p><strong>Hours:</strong> 24/7 Emergency Services</p>
+                    <p><strong>Email:</strong> support@stackly.com</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Location:</strong> Salem, India</p>
+                    <p><strong>Hours:</strong> 24/7 Emergency Services</p>
                 </ul>
             </div>
         </div>
@@ -1253,332 +1299,403 @@
         </div>
     </footer>
 
+    <!-- Appointment Modal -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Appointment</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="appointmentForm">
+                <div class="modal-form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="department">Medical Department</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="radiology">Radiology</option>
+                        <option value="dental">Dental Care</option>
+                    </select>
+                </div>
+                <div class="modal-form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-// =========================
-// HEADER SCROLL EFFECT
-// =========================
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-});
+        // =========================
+        // HEADER SCROLL EFFECT
+        // =========================
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-// =========================
-// MOBILE MENU OPEN / CLOSE
-// =========================
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileNav = document.getElementById('mobileNav');
-const overlay = document.getElementById('overlay');
-const closeMobileNav = document.getElementById('closeMobileNav');
+        // =========================
+        // MOBILE MENU OPEN / CLOSE
+        // =========================
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const closeMobileNav = document.getElementById('closeMobileNav');
 
-function openMobileNav() {
-    mobileNav.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeMobile() {
-    mobileNav.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-mobileMenu.addEventListener('click', openMobileNav);
-closeMobileNav.addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-
-// =========================
-// MOBILE DROPDOWN
-// =========================
-const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-
-mobileDropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const dropdown = toggle.nextElementSibling;
-        
-        toggle.classList.toggle('active');
-        dropdown.classList.toggle('active');
-    });
-});
-
-// =========================
-// CLOSE MOBILE WHEN CLICKING NAV LINKS
-// =========================
-const mobileLinks = document.querySelectorAll('.mobile-nav a');
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-        // Don't block dropdown toggle
-        if (this.classList.contains('mobile-dropdown-toggle')) {
-            e.preventDefault();
-            return;
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        
-        closeMobile();
-    });
-});
 
-// =========================
-// APPOINTMENT BUTTON
-// =========================
-const appointmentButtons = document.querySelectorAll('#bookAppointment, #mobileAppointment');
-appointmentButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        window.location.href = 'appointment.html';
-        closeMobile();
-    });
-});
+        function closeMobile() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
 
-// =========================
-// USER TYPE SELECTION
-// =========================
-const userOptions = document.querySelectorAll('.user-option');
-userOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        userOptions.forEach(opt => opt.classList.remove('active'));
-        option.classList.add('active');
-        
-        const userType = option.getAttribute('data-type');
-        console.log('Selected user type:', userType);
-        // You can use this to customize the login experience
-    });
-});
+        mobileMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobile);
+        overlay.addEventListener('click', closeMobile);
 
-// =========================
-// PASSWORD VISIBILITY TOGGLE
-// =========================
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
+        // =========================
+        // MOBILE DROPDOWN
+        // =========================
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-togglePassword.addEventListener('click', () => {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    
-    // Toggle eye icon
-    const eyeIcon = togglePassword.querySelector('i');
-    if (type === 'text') {
-        eyeIcon.classList.remove('fa-eye');
-        eyeIcon.classList.add('fa-eye-slash');
-    } else {
-        eyeIcon.classList.remove('fa-eye-slash');
-        eyeIcon.classList.add('fa-eye');
-    }
-});
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.nextElementSibling;
+                toggle.classList.toggle('active');
+                dropdown.classList.toggle('active');
+            });
+        });
 
-// =========================
-// LOGIN FORM SUBMISSION
-// =========================
-const loginForm = document.getElementById('loginForm');
-const loginButton = document.getElementById('loginButton');
-const loginButtonText = document.getElementById('loginButtonText');
-const loginSpinner = document.getElementById('loginSpinner');
+        // =========================
+        // APPOINTMENT MODAL
+        // =========================
+        const appointmentButtons = document.querySelectorAll('#bookAppointment, #mobileAppointment');
+        const appointmentModal = document.getElementById('appointmentModal');
+        const closeModal = document.getElementById('closeModal');
 
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const userType = document.querySelector('.user-option.active').getAttribute('data-type');
-    const rememberMe = document.getElementById('remember').checked;
-    
-    // Form validation
-    if (!email || !password) {
-        showMessage('Please fill in all fields', 'error');
-        loginForm.classList.add('shake');
-        setTimeout(() => loginForm.classList.remove('shake'), 500);
-        return;
-    }
-    
-    if (!validateEmail(email)) {
-        showMessage('Please enter a valid email address', 'error');
-        return;
-    }
-    
-    // Show loading state
-    loginButton.disabled = true;
-    loginButtonText.textContent = 'Logging in...';
-    loginSpinner.style.display = 'inline-block';
-    
-    try {
-        // In a real application, this would be an API call
-        await simulateLoginRequest(email, password, userType);
-        
-        // Show success message
-        showMessage(`Login successful! Welcome ${userType}`, 'success');
-        
-        // Redirect based on user type
-        setTimeout(() => {
-            switch(userType) {
-                case 'patient':
-                    window.location.href = 'patient-dashboard.html';
-                    break;
-                case 'doctor':
-                    window.location.href = 'doctor-dashboard.html';
-                    break;
-                case 'staff':
-                    window.location.href = 'staff-dashboard.html';
-                    break;
-                default:
-                    window.location.href = 'dashboard.html';
+        appointmentButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                appointmentModal.style.display = 'flex';
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            appointmentModal.style.display = 'none';
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === appointmentModal || e.target === overlay) {
+                appointmentModal.style.display = 'none';
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
-        }, 1500);
-        
-    } catch (error) {
-        // Show error message
-        showMessage(error.message, 'error');
-        
-        // Reset button state
-        loginButton.disabled = false;
-        loginButtonText.textContent = 'Login';
-        loginSpinner.style.display = 'none';
-    }
-});
+        });
 
-// =========================
-// SIMULATE LOGIN REQUEST
-// =========================
-function simulateLoginRequest(email, password, userType) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // Mock validation - In real app, this would be a server call
-            const testUsers = {
-                'patient@example.com': { password: 'password123', type: 'patient' },
-                'doctor@example.com': { password: 'doctor123', type: 'doctor' },
-                'staff@example.com': { password: 'staff123', type: 'staff' },
-                'demo@stacklyplus.com': { password: 'demo123', type: 'patient' }
+        // =========================
+        // SET TODAY DATE FOR APPOINTMENT
+        // =========================
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // =========================
+        // APPOINTMENT FORM SUBMISSION
+        // =========================
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                department: document.getElementById('department').value,
+                date: document.getElementById('date').value
             };
             
-            if (testUsers[email] && testUsers[email].password === password) {
-                if (testUsers[email].type === userType) {
-                    resolve({ success: true, userType });
-                } else {
-                    reject(new Error('Please select correct user type'));
-                }
+            // Validate
+            if (!formData.name || !formData.phone || !formData.email || !formData.department || !formData.date) {
+                alert('Please fill all required fields!');
+                return;
+            }
+            
+            // Show success message
+            alert(`Appointment booked successfully!\nWe'll contact you at ${formData.phone} to confirm.`);
+            
+            // Close modal
+            appointmentModal.style.display = 'none';
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            this.reset();
+            
+            // Reset date to today
+            document.getElementById('date').min = new Date().toISOString().split('T')[0];
+        });
+
+        // =========================
+        // USER TYPE SELECTION
+        // =========================
+        const userOptions = document.querySelectorAll('.user-option');
+        userOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                userOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                const userType = option.getAttribute('data-type');
+                console.log('Selected user type:', userType);
+            });
+        });
+
+        // =========================
+        // PASSWORD VISIBILITY TOGGLE
+        // =========================
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Toggle eye icon
+            const eyeIcon = togglePassword.querySelector('i');
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
             } else {
-                reject(new Error('Invalid email or password'));
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
             }
-        }, 1500); // Simulate network delay
-    });
-}
+        });
 
-// =========================
-// EMAIL VALIDATION
-// =========================
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
+        // =========================
+        // LOGIN FORM SUBMISSION
+        // =========================
+        const loginForm = document.getElementById('loginForm');
+        const loginButton = document.getElementById('loginButton');
+        const loginButtonText = document.getElementById('loginButtonText');
+        const loginSpinner = document.getElementById('loginSpinner');
 
-// =========================
-// SHOW MESSAGE FUNCTION
-// =========================
-function showMessage(message, type) {
-    // Remove existing message
-    const existingMessage = document.querySelector('.login-message');
-    if (existingMessage) existingMessage.remove();
-    
-    // Create new message element
-    const messageElement = document.createElement('div');
-    messageElement.className = `login-message ${type}`;
-    messageElement.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-        <span>${message}</span>
-    `;
-    
-    // Add styles for message
-    const style = document.createElement('style');
-    style.textContent = `
-        .login-message {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 9999;
-            animation: slideIn 0.3s ease;
-            max-width: 350px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .login-message.success {
-            background: #4caf50;
-            color: white;
-            border-left: 5px solid #2e7d32;
-        }
-        .login-message.error {
-            background: #ff7043;
-            color: white;
-            border-left: 5px solid #d84315;
-        }
-        .login-message i {
-            font-size: 20px;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    `;
-    
-    document.head.appendChild(style);
-    document.body.appendChild(messageElement);
-    
-    // Remove message after 5 seconds
-    setTimeout(() => {
-        messageElement.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            if (messageElement.parentNode) {
-                messageElement.parentNode.removeChild(messageElement);
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.querySelector('.user-option.active').getAttribute('data-type');
+            const rememberMe = document.getElementById('remember').checked;
+            
+            // Form validation
+            if (!email || !password) {
+                showMessage('Please fill in all fields', 'error');
+                loginForm.classList.add('shake');
+                setTimeout(() => loginForm.classList.remove('shake'), 500);
+                return;
             }
-        }, 300);
-    }, 5000);
-}
+            
+            if (!validateEmail(email)) {
+                showMessage('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Show loading state
+            loginButton.disabled = true;
+            loginButtonText.textContent = 'Logging in...';
+            loginSpinner.style.display = 'inline-block';
+            
+            try {
+                // In a real application, this would be an API call
+                await simulateLoginRequest(email, password, userType);
+                
+                // Show success message
+                showMessage(`Login successful! Welcome ${userType}`, 'success');
+                
+                // Redirect based on user type
+                setTimeout(() => {
+                    switch(userType) {
+                        case 'patient':
+                            window.location.href = 'patient-dashboard.html';
+                            break;
+                        case 'doctor':
+                            window.location.href = 'doctor-dashboard.html';
+                            break;
+                        case 'staff':
+                            window.location.href = 'staff-dashboard.html';
+                            break;
+                        default:
+                            window.location.href = 'dashboard.html';
+                    }
+                }, 1500);
+                
+            } catch (error) {
+                // Show error message
+                showMessage(error.message, 'error');
+                
+                // Reset button state
+                loginButton.disabled = false;
+                loginButtonText.textContent = 'Login';
+                loginSpinner.style.display = 'none';
+            }
+        });
 
-// =========================
-// SOCIAL LOGIN BUTTONS
-// =========================
-document.getElementById('googleLogin').addEventListener('click', () => {
-    showMessage('Google login would be implemented here', 'info');
-});
+        // =========================
+        // SIMULATE LOGIN REQUEST
+        // =========================
+        function simulateLoginRequest(email, password, userType) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // Mock validation - In real app, this would be a server call
+                    const testUsers = {
+                        'patient@example.com': { password: 'password123', type: 'patient' },
+                        'doctor@example.com': { password: 'doctor123', type: 'doctor' },
+                        'staff@example.com': { password: 'staff123', type: 'staff' },
+                        'demo@stacklyplus.com': { password: 'demo123', type: 'patient' }
+                    };
+                    
+                    if (testUsers[email] && testUsers[email].password === password) {
+                        if (testUsers[email].type === userType) {
+                            resolve({ success: true, userType });
+                        } else {
+                            reject(new Error('Please select correct user type'));
+                        }
+                    } else {
+                        reject(new Error('Invalid email or password'));
+                    }
+                }, 1500); // Simulate network delay
+            });
+        }
 
-document.getElementById('facebookLogin').addEventListener('click', () => {
-    showMessage('Facebook login would be implemented here', 'info');
-});
+        // =========================
+        // EMAIL VALIDATION
+        // =========================
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
 
-// =========================
-// DEMO LOGIN CREDENTIALS
-// =========================
-document.addEventListener('DOMContentLoaded', () => {
-    // Pre-fill demo credentials for testing
-    const urlParams = new URLSearchParams(window.location.search);
-    const demo = urlParams.get('demo');
-    
-    if (demo === 'true') {
-        document.getElementById('email').value = 'demo@stacklyplus.com';
-        document.getElementById('password').value = 'demo123';
-        showMessage('Demo credentials loaded. Click Login to continue.', 'info');
-    }
-    
-    // Add demo button
-    const demoButton = document.createElement('button');
-    demoButton.className = 'cta-button';
-    demoButton.innerHTML = '<i class="fas fa-user-secret"></i> Try Demo Account';
-    demoButton.style.marginTop = '20px';
-    demoButton.style.width = '100%';
-    demoButton.style.backgroundColor = 'var(--secondary)';
-    
-    demoButton.addEventListener('click', () => {
-        document.getElementById('email').value = 'demo@stacklyplus.com';
-        document.getElementById('password').value = 'demo123';
-        document.querySelector('.user-option[data-type="patient"]').click();
-        showMessage('Demo credentials loaded. Click Login to continue.', 'info');
-    });
-    
-    // Add after the form
-    const form = document.getElementById('loginForm');
-    form.parentNode.insertBefore(demoButton, form.nextSibling);
-});
+        // =========================
+        // SHOW MESSAGE FUNCTION
+        // =========================
+        function showMessage(message, type) {
+            // Remove existing message
+            const existingMessage = document.querySelector('.login-message');
+            if (existingMessage) existingMessage.remove();
+            
+            // Create new message element
+            const messageElement = document.createElement('div');
+            messageElement.className = `login-message ${type}`;
+            messageElement.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Add styles for message
+            const style = document.createElement('style');
+            style.textContent = `
+                .login-message {
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    z-index: 9999;
+                    animation: slideIn 0.3s ease;
+                    max-width: 350px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+                .login-message.success {
+                    background: #4caf50;
+                    color: white;
+                    border-left: 5px solid #2e7d32;
+                }
+                .login-message.error {
+                    background: #ff7043;
+                    color: white;
+                    border-left: 5px solid #d84315;
+                }
+                .login-message i {
+                    font-size: 20px;
+                }
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            
+            document.head.appendChild(style);
+            document.body.appendChild(messageElement);
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                messageElement.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (messageElement.parentNode) {
+                        messageElement.parentNode.removeChild(messageElement);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+
+        // =========================
+        // DEMO LOGIN CREDENTIALS
+        // =========================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pre-fill demo credentials for testing
+            const urlParams = new URLSearchParams(window.location.search);
+            const demo = urlParams.get('demo');
+            
+            if (demo === 'true') {
+                document.getElementById('email').value = 'demo@stacklyplus.com';
+                document.getElementById('password').value = 'demo123';
+                showMessage('Demo credentials loaded. Click Login to continue.', 'info');
+            }
+            
+            // Add demo button
+            const demoButton = document.createElement('button');
+            demoButton.className = 'cta-button';
+            demoButton.innerHTML = '<i class="fas fa-user-secret"></i> Try Demo Account';
+            demoButton.style.marginTop = '20px';
+            demoButton.style.width = '100%';
+            demoButton.style.backgroundColor = 'var(--secondary)';
+            
+            demoButton.addEventListener('click', () => {
+                document.getElementById('email').value = 'demo@stacklyplus.com';
+                document.getElementById('password').value = 'demo123';
+                document.querySelector('.user-option[data-type="patient"]').click();
+                showMessage('Demo credentials loaded. Click Login to continue.', 'info');
+            });
+            
+            // Add after the form
+            const form = document.getElementById('loginForm');
+            form.parentNode.insertBefore(demoButton, form.nextSibling);
+        });
     </script>
 </body>
 </html>

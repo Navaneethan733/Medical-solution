@@ -367,6 +367,17 @@
             border-radius: 12px;
         }
 
+        /* FIX: Close (X) button should not overlap Home */
+        .mobile-nav-close {
+            top: 10px !important;
+            right: 10px !important;
+            z-index: 2001 !important;
+        }
+
+        .mobile-nav ul {
+            margin-top: 20px !important;
+        }
+
         /* Close button for mobile menu */
         .mobile-nav-close {
             position: absolute;
@@ -587,6 +598,76 @@
         .suggestions-list a:hover {
             color: var(--primary-dark);
             padding-left: 5px;
+        }
+
+        /* Appointment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
         }
 
         /* Floating Elements */
@@ -853,7 +934,7 @@
     <!-- Header -->
     <header id="header">
         <a href="index.html" class="logo">
-            <i class="fas fa-stethoscope"></i>
+            <img src="./image/Untitled design.webp" alt="STACKLY Logo" class="logo-img">
             <span>Stackly</span> Plus
         </a>
         <nav class="desktop-nav">
@@ -861,8 +942,8 @@
                 <li class="dropdown">
                     <a href="index.html">Home<i class="fas fa-chevron-down dropdown-arrow"></i></a>
                     <div class="dropdown-content">
-                       <a href="./index.html"><i class=""></i>Home1</a>
-                    <a href="./home2.html"><i class=""></i>Home2</a> 
+                       <a href="./index.html"><i class="fas fa-home"></i> Home 1</a>
+                       <a href="./home2.html"><i class="fas fa-home"></i> Home 2</a> 
                     </div>
                 </li>
                 <li><a href="./services.html">Services</a></li>
@@ -887,16 +968,16 @@
             <li class="mobile-dropdown">
                 <a href="#" class="mobile-dropdown-toggle">Home<i class="fas fa-chevron-down"></i></a>
                 <div class="mobile-dropdown-content">
-                    <a href="./index.html"><i class=""></i>Home1</a>
-                    <a href="./home2.html"><i class=""></i>Home2</a>
+                    <a href="./index.html"><i class="fas fa-home"></i> Home 1</a>
+                    <a href="./home2.html"><i class="fas fa-home"></i> Home 2</a>
                 </div>
             </li>
             <li><a href="./services.html">Services</a></li>
-                <li><a href="./departments.html">Departments</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./login.html">Login</a></li>
+            <li><a href="./departments.html">Departments</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./login.html">Login</a></li>
         </ul>
         <button class="cta-button" id="mobileAppointment">Book Appointment</button>
     </div>
@@ -928,6 +1009,9 @@
                     <a href="index.html" class="cta-button">
                         <i class="fas fa-home"></i> Return to Home
                     </a>
+                    <button class="cta-button" id="pageAppointment">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
                     <a href="contact.html" class="secondary-button">
                         <i class="fas fa-headset"></i> Contact Support
                     </a>
@@ -936,12 +1020,12 @@
                 <div class="suggestions">
                     <h3>You might be looking for:</h3>
                     <ul class="suggestions-list">
-                        <li><i class="fas fa-check-circle"></i> <a href="./404.html">Our Medical Services</a></li>
-                        <li><i class="fas fa-check-circle"></i> <a href="./404.html">Medical Departments</a></li>
+                        <li><i class="fas fa-check-circle"></i> <a href="./services.html">Our Medical Services</a></li>
+                        <li><i class="fas fa-check-circle"></i> <a href="./departments.html">Medical Departments</a></li>
                         <li><i class="fas fa-check-circle"></i> <a href="./404.html">Find a Doctor</a></li>
-                        <li><i class="fas fa-check-circle"></i> <a href="./404.html">About MediCare Plus</a></li>
-                        <li><i class="fas fa-check-circle"></i> <a href="./404.html">Contact Information</a></li>
-                        <li><i class="fas fa-check-circle"></i> <a href="./404.html">Book Appointment</a></li>
+                        <li><i class="fas fa-check-circle"></i> <a href="./about.html">About MediCare Plus</a></li>
+                        <li><i class="fas fa-check-circle"></i> <a href="./contact.html">Contact Information</a></li>
+                        <li><i class="fas fa-check-circle"></i> <a href="#" id="suggestionAppointment">Book Appointment</a></li>
                     </ul>
                 </div>
             </div>
@@ -965,11 +1049,11 @@
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="./services.html">Services</a></li>
-                <li><a href="./departments.html">Departments</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./login.html">Login</a></li>
+                    <li><a href="./departments.html">Departments</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./login.html">Login</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1039,150 +1123,145 @@
     </div>
 
     <script>
-// =========================
-// HEADER SCROLL EFFECT
-// =========================
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-});
+        // =========================
+        // HEADER SCROLL EFFECT
+        // =========================
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-// =========================
-// MOBILE MENU OPEN / CLOSE
-// =========================
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileNav = document.getElementById('mobileNav');
-const overlay = document.getElementById('overlay');
-const closeMobileNav = document.getElementById('closeMobileNav');
+        // =========================
+        // MOBILE MENU OPEN / CLOSE
+        // =========================
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const closeMobileNav = document.getElementById('closeMobileNav');
 
-function openMobileNav() {
-    mobileNav.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeMobile() {
-    mobileNav.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-mobileMenu.addEventListener('click', openMobileNav);
-closeMobileNav.addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-
-// =========================
-// MOBILE DROPDOWN
-// =========================
-const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-
-mobileDropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const dropdown = toggle.nextElementSibling;
-
-        toggle.classList.toggle('active');
-        dropdown.classList.toggle('active');
-    });
-});
-
-// =========================
-// CLOSE MOBILE WHEN CLICKING NAV LINKS
-// =========================
-const mobileLinks = document.querySelectorAll('.mobile-nav a');
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-        if (this.classList.contains('mobile-dropdown-toggle')) {
-            e.preventDefault();
-            return;
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        closeMobile();
-    });
-});
 
-// =========================
-// APPOINTMENT MODAL
-// =========================
-const appointmentButtons = document.querySelectorAll('#bookAppointment, #mobileAppointment, .header-cta, a[href="#appointment"]');
-const appointmentModal = document.getElementById('appointmentModal');
-const closeModal = document.getElementById('closeModal');
-
-appointmentButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        // Check if it's an anchor link to appointment
-        if (button.getAttribute('href') === '#appointment') {
-            e.preventDefault();
+        function closeMobile() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
-        appointmentModal.style.display = 'flex';
-        closeMobile();
-    });
-});
 
-closeModal.addEventListener('click', () => {
-    appointmentModal.style.display = 'none';
-});
+        mobileMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobile);
+        overlay.addEventListener('click', closeMobile);
 
-window.addEventListener('click', (e) => {
-    if (e.target === appointmentModal) {
-        appointmentModal.style.display = 'none';
-    }
-});
+        // =========================
+        // MOBILE DROPDOWN
+        // =========================
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-// =========================
-// SET TODAY DATE FOR APPOINTMENT
-// =========================
-document.getElementById('date').min = new Date().toISOString().split('T')[0];
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.nextElementSibling;
 
-// =========================
-// FORM SUBMISSION HANDLER
-// =========================
-document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    alert('Thank you for booking an appointment! We will contact you shortly to confirm.');
-    appointmentModal.style.display = 'none';
-    
-    // Reset form
-    this.reset();
-});
+                toggle.classList.toggle('active');
+                dropdown.classList.toggle('active');
+            });
+        });
 
-// =========================
-// 404 PAGE ANIMATIONS
-// =========================
-document.addEventListener('DOMContentLoaded', () => {
-    const errorNumber = document.querySelector('.error-number');
-    const errorTitle = document.querySelector('.error-title');
-    const errorDescription = document.querySelector('.error-description');
-    
-    // Animate elements on load
-    setTimeout(() => {
-        errorNumber.style.opacity = '1';
-        errorNumber.style.transform = 'translateY(0)';
-    }, 300);
-    
-    setTimeout(() => {
-        errorTitle.style.opacity = '1';
-        errorTitle.style.transform = 'translateY(0)';
-    }, 600);
-    
-    setTimeout(() => {
-        errorDescription.style.opacity = '1';
-        errorDescription.style.transform = 'translateY(0)';
-    }, 900);
-});
+        // =========================
+        // CLOSE MOBILE WHEN CLICKING NAV LINKS
+        // =========================
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
 
-// Add animation styles for 404 elements
-const style = document.createElement('style');
-style.textContent = `
-    .error-number, .error-title, .error-description {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-    }
-`;
-document.head.appendChild(style);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (this.classList.contains('mobile-dropdown-toggle')) {
+                    e.preventDefault();
+                    return;
+                }
+                closeMobile();
+            });
+        });
+
+        // =========================
+        // APPOINTMENT MODAL
+        // =========================
+        const appointmentButtons = document.querySelectorAll('#bookAppointment, #mobileAppointment, #pageAppointment, #suggestionAppointment');
+        const appointmentModal = document.getElementById('appointmentModal');
+        const closeModal = document.getElementById('closeModal');
+
+        appointmentButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                appointmentModal.style.display = 'flex';
+                closeMobile();
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            appointmentModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === appointmentModal) {
+                appointmentModal.style.display = 'none';
+            }
+        });
+
+        // =========================
+        // SET TODAY DATE FOR APPOINTMENT
+        // =========================
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // =========================
+        // FORM SUBMISSION HANDLER
+        // =========================
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert('Thank you for booking an appointment! We will contact you shortly to confirm.');
+            appointmentModal.style.display = 'none';
+            
+            // Reset form
+            this.reset();
+        });
+
+        // =========================
+        // 404 PAGE ANIMATIONS
+        // =========================
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorNumber = document.querySelector('.error-number');
+            const errorTitle = document.querySelector('.error-title');
+            const errorDescription = document.querySelector('.error-description');
+            
+            // Animate elements on load
+            setTimeout(() => {
+                errorNumber.style.opacity = '1';
+                errorNumber.style.transform = 'translateY(0)';
+            }, 300);
+            
+            setTimeout(() => {
+                errorTitle.style.opacity = '1';
+                errorTitle.style.transform = 'translateY(0)';
+            }, 600);
+            
+            setTimeout(() => {
+                errorDescription.style.opacity = '1';
+                errorDescription.style.transform = 'translateY(0)';
+            }, 900);
+        });
+
+        // Add animation styles for 404 elements
+        const style = document.createElement('style');
+        style.textContent = `
+            .error-number, .error-title, .error-description {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
-
 </body>
 </html>
